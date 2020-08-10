@@ -181,7 +181,7 @@ export default class CancelPausev2 extends Component {
                             I want to stay
                         </Button>
                         <Button variant="danger" onClick={this.handleClose}>
-                            {this.state.cancelReason} my subscription
+                            {this.state.type} my subscription
                         </Button>
                     </Modal.Footer>
                 </Modal>

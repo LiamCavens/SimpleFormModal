@@ -79,19 +79,19 @@ const otherReasons = [
         label: "COVID-19",
     },
     {
-        value: "deliveryIssues",
+        value: "deliveryissues",
         label: "Delivery Issues",
     },
     {
-        value: "dontWantSub",
+        value: "dontwantsub",
         label: "Dont Want Sub",
     },
     {
-        value: "foodSurplus",
+        value: "foodsurplus",
         label: "Food Surplus",
     },
     {
-        value: "justTrialling",
+        value: "justtrialling",
         label: "Just Trialling",
     },
     {
@@ -121,13 +121,14 @@ export default class CancelPausev2 extends Component {
     };
 
     handleChange = (reason) => {
-        this.setState({ cancelReason: reason.value });
+        this.setState({ cancelReason: reason.value, cancelReasonSub: null });
     };
     handleChangeSub = (reason) => {
         this.setState({ cancelReasonSub: reason.value });
     };
     render() {
         let subMenu = "";
+        let retentionBody = "";
         if (this.state.cancelReason === "competitor") {
             subMenu = (
                 <Select onChange={this.handleChangeSub} options={competitors} />
@@ -140,6 +141,33 @@ export default class CancelPausev2 extends Component {
                 />
             );
         }
+
+        if (this.state.cancelReason === "fussy") {
+            retentionBody = (
+                <p>
+                    We offer a number of ways to help with fussy dogs, From
+                    trying different foods, to talking with our own
+                    behaviourilist over a phonecall. go{" "}
+                    <a href="www.google.com">here</a> to find out
+                </p>
+            );
+        } else if (this.state.cancelReason === "holiday") {
+            retentionBody = (
+                <p>
+                    If you are going on holiday, we can skip deliveries and
+                    choose the next delivery date tailored to you. **In future
+                    we would put a datepicker in here**
+                </p>
+            );
+        } else if (this.state.cancelReason === "dryfood") {
+            retentionBody = (
+                <p>
+                    We also offer a raw dry alternative, you can choose to
+                    switch to this <a href="www.google.com">here</a>
+                </p>
+            );
+        }
+
         return (
             <>
                 <Button
@@ -171,6 +199,8 @@ export default class CancelPausev2 extends Component {
                             options={reasons}
                         />
                         {subMenu}
+
+                        {retentionBody}
                     </Modal.Body>
                     <Modal.Footer dialogClassname={style.modal_footer}>
                         <Button

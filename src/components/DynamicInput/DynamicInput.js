@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import {
     makeStyles,
     Input,
@@ -18,6 +19,15 @@ const useStyles = makeStyles((theme) => ({
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
+    },
+    margin: {
+        margin: theme.spacing(1),
+    },
+    withoutLabel: {
+        marginTop: theme.spacing(3),
+    },
+    textField: {
+        width: "25ch",
     },
 }));
 
@@ -73,21 +83,15 @@ export default function DynamicInput() {
                 />
             </FormControl>
             <FormControl className={classes.formControl}>
+                <InputLabel>Weight</InputLabel>
                 <Input
                     id="standard-adornment-weight"
-                    value={values.weight}
+                    type="number"
                     onChange={handleChange("weight")}
                     endAdornment={
                         <InputAdornment position="end">Kg</InputAdornment>
                     }
-                    aria-describedby="standard-weight-helper-text"
-                    inputProps={{
-                        "aria-label": "weight",
-                    }}
                 />
-                <FormHelperText id="standard-weight-helper-text">
-                    Weight
-                </FormHelperText>
             </FormControl>
             <div>
                 <p>

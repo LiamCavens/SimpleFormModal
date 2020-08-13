@@ -52,7 +52,6 @@ export default function DynamicInput() {
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={values.type}
                     onChange={handleChange("type")}
                 >
                     <MenuItem value={"cat"}>Cat</MenuItem>
@@ -64,7 +63,6 @@ export default function DynamicInput() {
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={values.sex}
                     onChange={handleChange("sex")}
                 >
                     <MenuItem value={"male"}>Male</MenuItem>

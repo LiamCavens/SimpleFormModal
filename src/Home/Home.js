@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import CancelPausev2 from "../components/CancelPausev2/CancelPausev2";
+// import CancelPausev2 from "../components/CancelPausev2/CancelPausev2";
+import DynamicInput from "../components/DynamicInput/DynamicInput";
+import style from "./Home.module.css";
 
 class Home extends Component {
     constructor(props) {
@@ -13,9 +15,10 @@ class Home extends Component {
 
     render() {
         return (
-            <>
-                <CancelPausev2 />
-            </>
+            <div className={style.home}>
+                {/* <CancelPausev2 /> */}
+                <DynamicInput />
+            </div>
         );
     }
 }

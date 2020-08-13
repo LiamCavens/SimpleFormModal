@@ -74,7 +74,11 @@ export default function DynamicInput() {
                 </Select>
             </FormControl>
             <FormControl className={classes.formControl}>
-                <TextField id="standard-basic" label="Name" />
+                <TextField
+                    id="standard-basic"
+                    label="Name"
+                    onChange={handleChange("name")}
+                />
             </FormControl>
             <FormControl className={classes.formControl}>
                 <TextField
@@ -98,9 +102,9 @@ export default function DynamicInput() {
             </FormControl>
             <div>
                 <p>
-                    I am a {values.sex} {values.type}, I am {values.age} years
-                    old, Both my parents are {values.breed}, and I weigh{" "}
-                    {values.weight} kg.
+                    My name is {values.name}, I am a {values.sex} {values.type},
+                    I am {values.age} years old, Both my parents are{" "}
+                    {values.breed}, and I weigh {values.weight} kg.
                 </p>
             </div>
         </div>

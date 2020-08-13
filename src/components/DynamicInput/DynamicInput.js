@@ -42,7 +42,7 @@ export default function DynamicInput() {
         sex: "____",
         age: "__",
         weight: "__",
-        breed: "Golden Lab",
+        breed: "____",
     });
 
     const handleChange = (prop) => (event) => {
@@ -83,6 +83,13 @@ export default function DynamicInput() {
             <FormControl className={classes.formControl}>
                 <TextField
                     id="standard-basic"
+                    label="Breed"
+                    onChange={handleChange("breed")}
+                />
+            </FormControl>
+            <FormControl className={classes.formControl}>
+                <TextField
+                    id="standard-basic"
                     type="number"
                     label="Age"
                     onChange={handleChange("age")}
@@ -105,7 +112,7 @@ export default function DynamicInput() {
                     My name is {values.name ? values.name : "____"}, I am a{" "}
                     {values.sex} {values.type}, I am {values.age} years old,
                     Both my parents are {values.breed}, and I weigh{" "}
-                    {values.weight} kg.
+                    {values.weight}kg.
                 </p>
             </div>
         </div>

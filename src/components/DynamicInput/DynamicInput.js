@@ -102,9 +102,10 @@ export default function DynamicInput() {
             </FormControl>
             <div>
                 <p>
-                    My name is {values.name}, I am a {values.sex} {values.type},
-                    I am {values.age} years old, Both my parents are{" "}
-                    {values.breed}, and I weigh {values.weight} kg.
+                    My name is {values.name ? values.name : "____"}, I am a{" "}
+                    {values.sex} {values.type}, I am {values.age} years old,
+                    Both my parents are {values.breed}, and I weigh{" "}
+                    {values.weight} kg.
                 </p>
             </div>
         </div>

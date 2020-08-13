@@ -1,5 +1,4 @@
 import React from "react";
-import clsx from "clsx";
 import {
     makeStyles,
     Input,
@@ -9,13 +8,18 @@ import {
     Select,
     TextField,
     InputAdornment,
-    FormHelperText,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
         margin: theme.spacing(1),
         minWidth: 120,
+        "& label.Mui-focused": {
+            color: "gold",
+        },
+        "& .MuiInput-underline:after": {
+            borderBottomColor: "gold",
+        },
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
@@ -84,6 +88,7 @@ export default function DynamicInput() {
                 <InputLabel>Weight</InputLabel>
                 <Input
                     id="standard-adornment-weight"
+                    color="secondary"
                     type="number"
                     onChange={handleChange("weight")}
                     endAdornment={

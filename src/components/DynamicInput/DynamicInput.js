@@ -24,10 +24,11 @@ const useStyles = makeStyles((theme) => ({
 export default function DynamicInput() {
     const classes = useStyles();
     const [values, setValues] = React.useState({
-        type: "",
-        sex: "",
-        age: "",
-        weight: "",
+        type: "____",
+        sex: "____",
+        age: "__",
+        weight: "__",
+        breed: "Golden Lab",
     });
 
     const handleChange = (prop) => (event) => {
@@ -88,6 +89,13 @@ export default function DynamicInput() {
                     Weight
                 </FormHelperText>
             </FormControl>
+            <div>
+                <p>
+                    I am a {values.sex} {values.type}, I am {values.age} years
+                    old, Both my parents are {values.breed}, and I weigh{" "}
+                    {values.weight} kg.
+                </p>
+            </div>
         </div>
     );
 }

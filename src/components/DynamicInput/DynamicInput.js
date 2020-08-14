@@ -118,7 +118,6 @@ export default function DynamicInput() {
                     {values.breed
                         ? `Both my paretns are ${values.breed}, `
                         : ""}
-                    , and I weigh {values.weight}kg.
                     {values.weight ? `and I weigh ${values.weight}kg.` : ""}
                 </p>
             </div>

@@ -112,10 +112,20 @@ export default function DynamicInput() {
             </FormControl>
             <div>
                 <p>
-                    My name is {values.name ? values.name : "____"}, I am a{" "}
-                    {values.sex} {values.type}, I am {values.age} years old,
-                    Both my parents are {values.breed}, and I weigh{" "}
-                    {values.weight}kg.
+                    {values.name ? `My name is ${values.name}` : ""},{" "}
+                    {values.sex && values.type
+                        ? `I am a ${values.sex} ${values.type},`
+                        : values.sex
+                        ? `I am a ${values.sex},`
+                        : values.type
+                        ? `I am a ${values.type},`
+                        : ""}
+                    {values.age ? `I am ${values.age} years old,` : ""}
+                    {values.breed
+                        ? `Both my paretns are ${values.breed}, `
+                        : ""}
+                    , and I weigh {values.weight}kg.
+                    {values.weight ? `and I weigh ${values.weight}kg.` : ""}
                 </p>
             </div>
         </div>

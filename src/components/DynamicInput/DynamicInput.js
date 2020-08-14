@@ -108,17 +108,17 @@ export default function DynamicInput() {
                 <p>
                     {values.name ? `My name is ${values.name},` : ""}
                     {values.sex && values.type
-                        ? `I am a ${values.sex} ${values.type},`
+                        ? ` I am a ${values.sex} ${values.type},`
                         : values.sex
-                        ? `I am a ${values.sex},`
+                        ? ` I am a ${values.sex},`
                         : values.type
-                        ? `I am a ${values.type},`
+                        ? ` I am a ${values.type},`
                         : ""}
-                    {values.age ? `I am ${values.age} years old,` : ""}
+                    {values.age ? ` I am ${values.age} years old,` : ""}
                     {values.breed
-                        ? `Both my parents are ${values.breed}, `
+                        ? ` Both my parents are ${values.breed}, `
                         : ""}
-                    {values.weight ? `and I weigh ${values.weight}kg.` : ""}
+                    {values.weight ? ` I weigh ${values.weight}kg.` : ""}
                 </p>
             </div>
         </div>

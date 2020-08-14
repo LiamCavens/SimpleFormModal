@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
     textField: {
         width: "25ch",
     },
+    select: {
+        width: "25ch",
+    },
 }));
 
 export default function DynamicInput() {

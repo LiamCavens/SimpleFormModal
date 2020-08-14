@@ -40,13 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DynamicInput() {
     const classes = useStyles();
-    const [values, setValues] = React.useState({
-        type: "____",
-        sex: "____",
-        age: "__",
-        weight: "__",
-        breed: "____",
-    });
+    const [values, setValues] = React.useState({});
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });

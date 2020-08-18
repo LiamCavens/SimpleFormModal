@@ -5,7 +5,6 @@ import {
     withStyles,
     Input,
     Button,
-    InputLabel,
     MenuItem,
     FormControl,
     Select,
@@ -54,6 +53,8 @@ class Wizardv1 extends Component {
                 type: "",
                 breed: "",
                 sex: "",
+                age: "",
+                weight: "",
             },
             stage: 1,
         };
@@ -74,17 +75,15 @@ class Wizardv1 extends Component {
     };
 
     handleNext = () => {
-        if (this.state.stage === 1) {
-            this.setState({ stage: 2 });
-        } else if (this.state.stage === 2) {
-            this.setState({ stage: 3 });
-        }
+        this.setState((prevState) => ({
+            stage: prevState.stage + 1,
+        }));
     };
 
     render() {
         const { classes } = this.props;
         let wizardStage;
-        let summary1, summary2;
+        let summary1, summary2, summary3;
         if (this.state.stage === 1) {
             wizardStage = (
                 <div className={style.wizardStage}>
@@ -121,13 +120,6 @@ class Wizardv1 extends Component {
                                 }}
                             />
                         </FormControl>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={this.handleNext}
-                        >
-                            Next
-                        </Button>
                     </form>
                 </div>
             );
@@ -151,7 +143,7 @@ class Wizardv1 extends Component {
                         and my breed is
                         <FormControl className={classes.formControl}>
                             <TextField
-                                defaultValue={"Breed"}
+                                value={""}
                                 className={classes.fixInput}
                                 placeholder={"Breed"}
                                 id="standard-basic"
@@ -168,23 +160,60 @@ class Wizardv1 extends Component {
                                 }}
                             />
                         </FormControl>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={this.handleNext}
-                        >
-                            Next
-                        </Button>
+                    </form>
+                </div>
+            );
+        } else if (this.state.stage === 3) {
+            wizardStage = (
+                <div className={style.wizardStage}>
+                    <form>
+                        I am
+                        <FormControl className={classes.formControl}>
+                            <TextField
+                                className={classes.fixInput}
+                                id="standard-basic"
+                                type="number"
+                                label="Age"
+                                onChange={(event) => {
+                                    const { value } = event.target;
+                                    this.setState((prevState) => ({
+                                        pet: {
+                                            ...prevState.pet,
+                                            age: value,
+                                        },
+                                    }));
+                                }}
+                            />
+                        </FormControl>
+                        years old, and I weigh
+                        <FormControl className={classes.formControl}>
+                            <Input
+                                id="standard-adornment-weight"
+                                color="secondary"
+                                type="number"
+                                name="weight"
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        Kg
+                                    </InputAdornment>
+                                }
+                                onChange={(event) => {
+                                    const { value } = event.target;
+                                    this.setState((prevState) => ({
+                                        pet: {
+                                            ...prevState.pet,
+                                            weight: value,
+                                        },
+                                    }));
+                                }}
+                            />
+                        </FormControl>
                     </form>
                 </div>
             );
         }
 
-        if (
-            this.state.pet.type &&
-            this.state.pet.name &&
-            this.state.stage >= 2
-        ) {
+        if (this.state.stage >= 2) {
             summary1 = (
                 <p>
                     I am a {this.state.pet.type} named {this.state.pet.name}.
@@ -192,14 +221,19 @@ class Wizardv1 extends Component {
             );
         }
 
-        if (
-            this.state.pet.sex &&
-            this.state.pet.breed &&
-            this.state.stage >= 3
-        ) {
+        if (this.state.stage >= 3) {
             summary2 = (
                 <p>
                     I am a {this.state.pet.sex} {this.state.pet.breed}.
+                </p>
+            );
+        }
+
+        if (this.state.stage >= 4) {
+            summary3 = (
+                <p>
+                    I am {this.state.pet.age} years old and I weigh{" "}
+                    {this.state.pet.weight}kg.
                 </p>
             );
         }
@@ -213,7 +247,15 @@ class Wizardv1 extends Component {
                 <div className={style.wizardContent}>
                     {summary1}
                     {summary2}
+                    {summary3}
                     {wizardStage}
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={this.handleNext}
+                    >
+                        Next
+                    </Button>
                 </div>
             </div>
         );

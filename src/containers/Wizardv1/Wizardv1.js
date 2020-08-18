@@ -80,6 +80,16 @@ class Wizardv1 extends Component {
         }));
     };
 
+    handleActiveClick = (activity) => {
+        this.setState((prevState) => ({
+            stage: prevState.stage + 1,
+            pet: {
+                ...prevState.pet,
+                activityLevel: activity,
+            },
+        }));
+    };
+
     render() {
         const { classes } = this.props;
         let wizardStage;
@@ -211,6 +221,35 @@ class Wizardv1 extends Component {
                     </form>
                 </div>
             );
+        } else if (this.state.stage === 4) {
+            wizardStage = (
+                <div className={style.wizardStage}>
+                    <form>
+                        I am this active
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={this.handleActiveClick("couch")}
+                        >
+                            Couch Potato
+                        </Button>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={this.handleActiveClick("active")}
+                        >
+                            Active
+                        </Button>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={this.handleActiveClick("super")}
+                        >
+                            Super Energetic
+                        </Button>
+                    </form>
+                </div>
+            );
         }
 
         if (this.state.stage >= 2) {
@@ -248,14 +287,16 @@ class Wizardv1 extends Component {
                     {summary1}
                     {summary2}
                     {summary3}
-                    {wizardStage}
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={this.handleNext}
-                    >
-                        Next
-                    </Button>
+                    <div className={style.wizardStageInput}>
+                        {wizardStage}
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={this.handleNext}
+                        >
+                            Next
+                        </Button>
+                    </div>
                 </div>
             </div>
         );

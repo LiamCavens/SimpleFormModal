@@ -2,6 +2,10 @@
     padding: 20px 20%;
 }
 
+.headerLogo {
+    height: 100px;
+}
+
 .add_pet {
     font-size: 16px;
     margin-right: 100px;
